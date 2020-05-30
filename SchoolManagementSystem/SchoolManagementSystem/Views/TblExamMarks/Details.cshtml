@@ -1,0 +1,66 @@
+﻿@model DatabaseAccess.TblExamMark
+
+@{
+    ViewBag.Title = "Exam Mark Details";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Student Name :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblStudent.StudentName)
+        </dd>
+
+        <dt>
+            Class :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblClass.ClassName)
+        </dd>
+
+        <dt>
+            Exam Title :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblExam.ExamTitle)
+        </dd>
+
+        <dt>
+            Obtain Marks :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamMarksObtain)
+        </dd>
+
+        <dt>
+            Total Marks :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamMarksTotal)
+        </dd>
+
+        <dt>
+            User Name :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblUser.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ExamMarksId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</p>

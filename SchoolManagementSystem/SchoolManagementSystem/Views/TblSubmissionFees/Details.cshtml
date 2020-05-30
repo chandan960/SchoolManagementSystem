@@ -1,0 +1,82 @@
+﻿@model DatabaseAccess.TblSubmissionFee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TblSubmissionFee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmissionFeeAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubmissionFeeAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmissionFeeDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubmissionFeeDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmissionFeeMonth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubmissionFeeMonth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmissionFeeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubmissionFeeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblClass.ClassName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblClass.ClassName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblProgramme.ProgrammeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblProgramme.ProgrammeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblStudent.StudentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblStudent.StudentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TblUser.UserFullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblUser.UserFullName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SubmissionFeeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

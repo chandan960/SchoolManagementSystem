@@ -1,0 +1,42 @@
+﻿@model DatabaseAccess.TblDesignation
+
+@{
+    ViewBag.Title = "Designations Details";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Designation :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesignationTitle)
+        </dd>
+
+        <dt>
+            Status :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesignationStatus)
+        </dd>
+
+        <dt>
+            User Name :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblUser.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DesignationId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</p>

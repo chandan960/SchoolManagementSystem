@@ -1,0 +1,50 @@
+﻿@model DatabaseAccess.TblSession
+
+@{
+    ViewBag.Title = "Session Details";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Session Name :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SessionName)
+        </dd>
+
+        <dt>
+            Start Date :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SessionStartDate)
+        </dd>
+
+        <dt>
+            End Date :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SessionEndDate)
+        </dd>
+
+        <dt>
+            User Name :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblUser.UserFullName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SessionId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</p>

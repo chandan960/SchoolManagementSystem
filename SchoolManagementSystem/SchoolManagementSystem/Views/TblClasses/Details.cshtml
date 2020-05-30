@@ -1,0 +1,33 @@
+﻿@model DatabaseAccess.TblClass
+
+@{
+    ViewBag.Title = "Class Details";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Class :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassName)
+        </dd>
+
+        <dt>
+            Status :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassStatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClassId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</p>

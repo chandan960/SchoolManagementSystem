@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DatabaseAccess.TblSubmissionFee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmissionFeeAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmissionFeeDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmissionFeeMonth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmissionFeeDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TblClass.ClassName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TblProgramme.ProgrammeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TblStudent.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TblUser.UserFullName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmissionFeeAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmissionFeeDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmissionFeeMonth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmissionFeeDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TblClass.ClassName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TblProgramme.ProgrammeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TblStudent.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TblUser.UserFullName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SubmissionFeeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SubmissionFeeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SubmissionFeeId })
+        </td>
+    </tr>
+}
+
+</table>

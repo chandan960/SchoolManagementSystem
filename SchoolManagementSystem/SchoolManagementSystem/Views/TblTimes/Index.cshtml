@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DatabaseAccess.TblTime>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeEnd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TblExam.ExamTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TblRoom.RoomTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TblSubject.SubjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TblUser.UserFullName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeEnd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TblExam.ExamTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TblRoom.RoomTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TblSubject.SubjectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TblUser.UserFullName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TimeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TimeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TimeId })
+        </td>
+    </tr>
+}
+
+</table>

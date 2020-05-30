@@ -1,0 +1,1784 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbSchoolManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TblAnnual">
+    <Key>
+      <PropertyRef Name="AnnualId" />
+    </Key>
+    <Property Name="AnnualId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ProgrammeId" Type="Int32" Nullable="false" />
+    <Property Name="AnnualTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AnnualDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="AnnualFees" Type="Double" />
+    <Property Name="AnnualStatus" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TblProgramme" Relationship="Self.FK_TblAnnual_TblProgramme" FromRole="TblAnnual" ToRole="TblProgramme" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblAnnual_TblUser" FromRole="TblAnnual" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblClass">
+    <Key>
+      <PropertyRef Name="ClassId" />
+    </Key>
+    <Property Name="ClassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClassStatus" Type="Boolean" />
+    <NavigationProperty Name="TblClassSubjects" Relationship="Self.FK_TblClassSubject_TblClass" FromRole="TblClass" ToRole="TblClassSubject" />
+    <NavigationProperty Name="TblExamMarks" Relationship="Self.FK_TblExamMarks_TblClass" FromRole="TblClass" ToRole="TblExamMarks" />
+    <NavigationProperty Name="TblStudentPromots" Relationship="Self.FK_TblPromot_TblClass" FromRole="TblClass" ToRole="TblStudentPromot" />
+    <NavigationProperty Name="TblSessionProgrammeSubjectSettings" Relationship="Self.FK_TblSessionProgrammeSubjectSetting_TblClass" FromRole="TblClass" ToRole="TblSessionProgrammeSubjectSetting" />
+    <NavigationProperty Name="TblStudents" Relationship="Self.FK_TblStudent_TblClass" FromRole="TblClass" ToRole="TblStudent" />
+    <NavigationProperty Name="TblStudentAttendances" Relationship="Self.FK_TblStudentAttendance_TblClass" FromRole="TblClass" ToRole="TblStudentAttendance" />
+    <NavigationProperty Name="TblStudentLeavings" Relationship="Self.FK_TblStudentLeaving_TblClass" FromRole="TblClass" ToRole="TblStudentLeaving" />
+    <NavigationProperty Name="TblSubmissionFees" Relationship="Self.FK_TblSubmissionFee_TblClass" FromRole="TblClass" ToRole="TblSubmissionFee" />
+  </EntityType>
+  <EntityType Name="TblClassSubject">
+    <Key>
+      <PropertyRef Name="ClassSubjectId" />
+    </Key>
+    <Property Name="ClassSubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClassId" Type="Int32" Nullable="false" />
+    <Property Name="SubjectId" Type="Int32" Nullable="false" />
+    <Property Name="ClassSubjectTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClassSubjectStatus" Type="Boolean" />
+    <NavigationProperty Name="TblClass" Relationship="Self.FK_TblClassSubject_TblClass" FromRole="TblClassSubject" ToRole="TblClass" />
+    <NavigationProperty Name="TblSubject" Relationship="Self.FK_TblClassSubject_TblSubject" FromRole="TblClassSubject" ToRole="TblSubject" />
+  </EntityType>
+  <EntityType Name="TblDesignation">
+    <Key>
+      <PropertyRef Name="DesignationId" />
+    </Key>
+    <Property Name="DesignationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="DesignationTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DesignationStatus" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblDesignation_TblUser" FromRole="TblDesignation" ToRole="TblUser" />
+    <NavigationProperty Name="TblEmployees" Relationship="Self.FK_TblEmployee_TblDesignation" FromRole="TblDesignation" ToRole="TblEmployee" />
+  </EntityType>
+  <EntityType Name="TblEmployee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="DesignationId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeeContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeeEmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeeQualification" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeePhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeBasicSalary" Type="Double" Nullable="false" />
+    <Property Name="EmployeeStatus" Type="Boolean" Nullable="false" />
+    <Property Name="EmployeeGender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeeHomeContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeeDoYouHaveAnyDisability" Type="Boolean" Nullable="false" />
+    <Property Name="EmployeeIfDisabilityYesGiveIssue" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeDoYouTakingAnyMedication" Type="Boolean" Nullable="false" />
+    <Property Name="EmployeeIfMedicationYesGiveIssue" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeAnyCreminalOffCenceAgain" Type="Boolean" Nullable="false" />
+    <Property Name="EmployeeIfCreminalOffCenceAgainYesGiveIssue" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeRegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="TblDesignation" Relationship="Self.FK_TblEmployee_TblDesignation" FromRole="TblEmployee" ToRole="TblDesignation" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblEmployee_TblUser" FromRole="TblEmployee" ToRole="TblUser" />
+    <NavigationProperty Name="TblEmployeeAttendances" Relationship="Self.FK_TblEmployeeAttendance_TblEmployee" FromRole="TblEmployee" ToRole="TblEmployeeAttendance" />
+    <NavigationProperty Name="TblEmployeeLeavings" Relationship="Self.FK_TblEmployeeLeaving_TblEmployee" FromRole="TblEmployee" ToRole="TblEmployeeLeaving" />
+    <NavigationProperty Name="TblEmployeeSalaries" Relationship="Self.FK_TblEmployeeSalary_TblEmployee" FromRole="TblEmployee" ToRole="TblEmployeeSalary" />
+  </EntityType>
+  <EntityType Name="TblEmployeeAttendance">
+    <Key>
+      <PropertyRef Name="EmployeeAttendanceId" />
+    </Key>
+    <Property Name="EmployeeAttendanceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeAttendanceDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EmployeeAttendanceComingTime" Type="Time" Precision="7" />
+    <Property Name="EmployeeAttendanceClosingTime" Type="Time" Precision="7" />
+    <NavigationProperty Name="TblEmployee" Relationship="Self.FK_TblEmployeeAttendance_TblEmployee" FromRole="TblEmployeeAttendance" ToRole="TblEmployee" />
+  </EntityType>
+  <EntityType Name="TblEmployeeCertificate">
+    <Key>
+      <PropertyRef Name="EmployeeCertificateId" />
+    </Key>
+    <Property Name="EmployeeCertificateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeResumeId" Type="Int32" />
+    <Property Name="EmployeeCertificateName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeCertificateAuthority" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeCertificateLevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeCertificateFromYear" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TblEmployeeResume" Relationship="Self.FK_TblEmployeeCertificate_TblEmployeeResume" FromRole="TblEmployeeCertificate" ToRole="TblEmployeeResume" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblEmployeeCertificate_TblUser" FromRole="TblEmployeeCertificate" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblEmployeeEducation">
+    <Key>
+      <PropertyRef Name="EmployeeEducationId" />
+    </Key>
+    <Property Name="EmployeeEducationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeResumeId" Type="Int32" />
+    <Property Name="EmployeeEducationInstitute" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeEducationTitleOfDiploma" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeEducationDegree" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeEducationFromYear" Type="DateTime" Precision="3" />
+    <Property Name="EmployeeEducationToYear" Type="DateTime" Precision="3" />
+    <Property Name="EmployeeEducationCity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeEducationCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblEmployeeResume" Relationship="Self.FK_TblEmployeeEducation_TblEmployeeResume" FromRole="TblEmployeeEducation" ToRole="TblEmployeeResume" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblEmployeeEducation_TblUser" FromRole="TblEmployeeEducation" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblEmployeeLanguage">
+    <Key>
+      <PropertyRef Name="EmployeeLanguageId" />
+    </Key>
+    <Property Name="EmployeeLanguageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeResumeId" Type="Int32" />
+    <Property Name="EmployeeLanguageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeLanguageProficiency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblEmployeeResume" Relationship="Self.FK_TblEmployeeLanguage_TblEmployeeResume" FromRole="TblEmployeeLanguage" ToRole="TblEmployeeResume" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblEmployeeLanguage_TblUser" FromRole="TblEmployeeLanguage" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblEmployeeLeaving">
+    <Key>
+      <PropertyRef Name="EmployeeLeavingId" />
+    </Key>
+    <Property Name="EmployeeLeavingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeLeavingDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EmployeeLeavingReason" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeeLeavingComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeLeavingCreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="TblEmployee" Relationship="Self.FK_TblEmployeeLeaving_TblEmployee" FromRole="TblEmployeeLeaving" ToRole="TblEmployee" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblEmployeeLeaving_TblUser" FromRole="TblEmployeeLeaving" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblEmployeeResume">
+    <Key>
+      <PropertyRef Name="EmployeeResumeId" />
+    </Key>
+    <Property Name="EmployeeResumeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" />
+    <Property Name="EmployeeResumeFirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeResumeLastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeResumeDateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="EmployeeResumeNationality" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeResumeEducationLevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeResumeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeResumeContactNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeResumeEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeResumeSummary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeResumeLinkIn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeResumeFacebook" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeResumeTwitter" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeResumeImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblEmployeeCertificates" Relationship="Self.FK_TblEmployeeCertificate_TblEmployeeResume" FromRole="TblEmployeeResume" ToRole="TblEmployeeCertificate" />
+    <NavigationProperty Name="TblEmployeeEducations" Relationship="Self.FK_TblEmployeeEducation_TblEmployeeResume" FromRole="TblEmployeeResume" ToRole="TblEmployeeEducation" />
+    <NavigationProperty Name="TblEmployeeLanguages" Relationship="Self.FK_TblEmployeeLanguage_TblEmployeeResume" FromRole="TblEmployeeResume" ToRole="TblEmployeeLanguage" />
+    <NavigationProperty Name="TblEmployeeSkills" Relationship="Self.FK_TblEmployeeSkill_TblEmployeeResume" FromRole="TblEmployeeResume" ToRole="TblEmployeeSkill" />
+    <NavigationProperty Name="TblEmployeeWorkExperiences" Relationship="Self.FK_TblEmployeeWorkExperience_TblEmployeeResume" FromRole="TblEmployeeResume" ToRole="TblEmployeeWorkExperience" />
+  </EntityType>
+  <EntityType Name="TblEmployeeSalary">
+    <Key>
+      <PropertyRef Name="EmployeeSalaryId" />
+    </Key>
+    <Property Name="EmployeeSalaryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeSalaryAmount" Type="Double" Nullable="false" />
+    <Property Name="EmployeeSalaryMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeeSalaryYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeeSalaryDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EmployeeSalaryComments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TblEmployee" Relationship="Self.FK_TblEmployeeSalary_TblEmployee" FromRole="TblEmployeeSalary" ToRole="TblEmployee" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblEmployeeSalary_TblUser" FromRole="TblEmployeeSalary" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblEmployeeSkill">
+    <Key>
+      <PropertyRef Name="EmployeeSkillId" />
+    </Key>
+    <Property Name="EmployeeSkillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeResumeId" Type="Int32" />
+    <Property Name="EmployeeSkillName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblEmployeeResume" Relationship="Self.FK_TblEmployeeSkill_TblEmployeeResume" FromRole="TblEmployeeSkill" ToRole="TblEmployeeResume" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblEmployeeSkill_TblUser" FromRole="TblEmployeeSkill" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblEmployeeWorkExperience">
+    <Key>
+      <PropertyRef Name="EmployeeWorkExperienceId" />
+    </Key>
+    <Property Name="EmployeeWorkExperienceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeResumeId" Type="Int32" />
+    <Property Name="EmployeeWorkExperienceCompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeWorkExperienceTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeWorkExperienceCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeWorkExperienceFromYear" Type="DateTime" Precision="3" />
+    <Property Name="EmployeeWorkExperienceToYear" Type="DateTime" Precision="3" />
+    <Property Name="EmployeeWorkExperienceDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblEmployeeResume" Relationship="Self.FK_TblEmployeeWorkExperience_TblEmployeeResume" FromRole="TblEmployeeWorkExperience" ToRole="TblEmployeeResume" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblEmployeeWorkExperience_TblUser" FromRole="TblEmployeeWorkExperience" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblEvent">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="EventTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EventDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EventLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EventDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblEvent_TblUser" FromRole="TblEvent" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblExam">
+    <Key>
+      <PropertyRef Name="ExamId" />
+    </Key>
+    <Property Name="ExamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ExamTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ExamStartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ExamEndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ExamDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblExam_TblUser" FromRole="TblExam" ToRole="TblUser" />
+    <NavigationProperty Name="TblExamMarks" Relationship="Self.FK_TblExamMarks_TblExam" FromRole="TblExam" ToRole="TblExamMarks" />
+    <NavigationProperty Name="TblExamSettings" Relationship="Self.FK_TblExamSetting_TblExam" FromRole="TblExam" ToRole="TblExamSetting" />
+    <NavigationProperty Name="TblTimes" Relationship="Self.FK_TblTime_TblExam" FromRole="TblExam" ToRole="TblTime" />
+  </EntityType>
+  <EntityType Name="TblExamMark">
+    <Key>
+      <PropertyRef Name="ExamMarksId" />
+    </Key>
+    <Property Name="ExamMarksId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExamId" Type="Int32" Nullable="false" />
+    <Property Name="ClassId" Type="Int32" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ExamMarksTotal" Type="Double" Nullable="false" />
+    <Property Name="ExamMarksObtain" Type="Double" Nullable="false" />
+    <NavigationProperty Name="TblClass" Relationship="Self.FK_TblExamMarks_TblClass" FromRole="TblExamMarks" ToRole="TblClass" />
+    <NavigationProperty Name="TblExam" Relationship="Self.FK_TblExamMarks_TblExam" FromRole="TblExamMarks" ToRole="TblExam" />
+    <NavigationProperty Name="TblStudent" Relationship="Self.FK_TblExamMarks_TblStudent" FromRole="TblExamMarks" ToRole="TblStudent" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblExamMarks_TblUser" FromRole="TblExamMarks" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblExamSetting">
+    <Key>
+      <PropertyRef Name="ExamSettingId" />
+    </Key>
+    <Property Name="ExamSettingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="SessionId" Type="Int32" Nullable="false" />
+    <Property Name="ExamId" Type="Int32" Nullable="false" />
+    <Property Name="ProgrammeSessionId" Type="Int32" Nullable="false" />
+    <Property Name="ExamSettingDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TblExam" Relationship="Self.FK_TblExamSetting_TblExam" FromRole="TblExamSetting" ToRole="TblExam" />
+    <NavigationProperty Name="TblProgrammeSession" Relationship="Self.FK_TblExamSetting_TblProgrammeSession" FromRole="TblExamSetting" ToRole="TblProgrammeSession" />
+    <NavigationProperty Name="TblSession" Relationship="Self.FK_TblExamSetting_tblSession" FromRole="TblExamSetting" ToRole="TblSession" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblExamSetting_TblUser" FromRole="TblExamSetting" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblExpense">
+    <Key>
+      <PropertyRef Name="ExpenseId" />
+    </Key>
+    <Property Name="ExpenseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="ExpenseAmount" Type="Double" Nullable="false" />
+    <Property Name="ExpenseInvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ExpenseReason" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ExpenseDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpenseDescrption" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TblExpenseType" Relationship="Self.FK_TblExpense_TblExpenseType" FromRole="TblExpense" ToRole="TblExpenseType" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblExpense_TblUser" FromRole="TblExpense" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblExpenseType">
+    <Key>
+      <PropertyRef Name="ExpenseTypeId" />
+    </Key>
+    <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ExpenseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ExpenseTypeStatus" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TblExpenses" Relationship="Self.FK_TblExpense_TblExpenseType" FromRole="TblExpenseType" ToRole="TblExpense" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblExpenseType_TblUser" FromRole="TblExpenseType" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblProgramme">
+    <Key>
+      <PropertyRef Name="ProgrammeId" />
+    </Key>
+    <Property Name="ProgrammeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ProgrammeName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProgrammeStartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ProgrammeStatus" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TblAnnuals" Relationship="Self.FK_TblAnnual_TblProgramme" FromRole="TblProgramme" ToRole="TblAnnual" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblProgramme_TblUser" FromRole="TblProgramme" ToRole="TblUser" />
+    <NavigationProperty Name="TblProgrammeSessions" Relationship="Self.FK_TblProgrammeSession_TblProgramme" FromRole="TblProgramme" ToRole="TblProgrammeSession" />
+    <NavigationProperty Name="TblSessionProgrammeSubjectSettings" Relationship="Self.FK_TblSessionProgrammeSubjectSetting_TblProgramme" FromRole="TblProgramme" ToRole="TblSessionProgrammeSubjectSetting" />
+    <NavigationProperty Name="TblStudents" Relationship="Self.FK_TblStudent_TblProgramme" FromRole="TblProgramme" ToRole="TblStudent" />
+    <NavigationProperty Name="TblSubmissionFees" Relationship="Self.FK_TblSubmissionFee_TblProgramme" FromRole="TblProgramme" ToRole="TblSubmissionFee" />
+  </EntityType>
+  <EntityType Name="TblProgrammeSession">
+    <Key>
+      <PropertyRef Name="ProgrammeSessionId" />
+    </Key>
+    <Property Name="ProgrammeSessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ProgrammeId" Type="Int32" Nullable="false" />
+    <Property Name="SessionId" Type="Int32" Nullable="false" />
+    <Property Name="ProgrammeSessionDetails" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProgrammeSessionRegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ProgrammeSessionDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TblExamSettings" Relationship="Self.FK_TblExamSetting_TblProgrammeSession" FromRole="TblProgrammeSession" ToRole="TblExamSetting" />
+    <NavigationProperty Name="TblProgramme" Relationship="Self.FK_TblProgrammeSession_TblProgramme" FromRole="TblProgrammeSession" ToRole="TblProgramme" />
+    <NavigationProperty Name="TblSession" Relationship="Self.FK_TblProgrammeSession_tblSession" FromRole="TblProgrammeSession" ToRole="TblSession" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblProgrammeSession_TblUser" FromRole="TblProgrammeSession" ToRole="TblUser" />
+    <NavigationProperty Name="TblStudentPromots" Relationship="Self.FK_TblPromot_TblProgrammeSession" FromRole="TblProgrammeSession" ToRole="TblStudentPromot" />
+  </EntityType>
+  <EntityType Name="TblRoom">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RoomNo" Type="Int32" Nullable="false" />
+    <Property Name="RoomTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RoomDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblRoom_TblUser" FromRole="TblRoom" ToRole="TblUser" />
+    <NavigationProperty Name="TblTimes" Relationship="Self.FK_TblTime_TblRoom" FromRole="TblRoom" ToRole="TblTime" />
+  </EntityType>
+  <EntityType Name="TblSection">
+    <Key>
+      <PropertyRef Name="SectionId" />
+    </Key>
+    <Property Name="SectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="SectionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TblStudentPromots" Relationship="Self.FK_TblPromot_TblSection" FromRole="TblSection" ToRole="TblStudentPromot" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblSection_TblUser" FromRole="TblSection" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblSession">
+    <Key>
+      <PropertyRef Name="SessionId" />
+    </Key>
+    <Property Name="SessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="SessionName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SessionStartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SessionEndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="TblExamSettings" Relationship="Self.FK_TblExamSetting_tblSession" FromRole="TblSession" ToRole="TblExamSetting" />
+    <NavigationProperty Name="TblProgrammeSessions" Relationship="Self.FK_TblProgrammeSession_tblSession" FromRole="TblSession" ToRole="TblProgrammeSession" />
+    <NavigationProperty Name="TblStudentPromots" Relationship="Self.FK_TblPromot_TblSession" FromRole="TblSession" ToRole="TblStudentPromot" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_tblSession_TblUser" FromRole="TblSession" ToRole="TblUser" />
+    <NavigationProperty Name="TblSessionProgrammeSubjectSettings" Relationship="Self.FK_TblSessionProgrammeSubjectSetting_TblSession" FromRole="TblSession" ToRole="TblSessionProgrammeSubjectSetting" />
+    <NavigationProperty Name="TblStudents" Relationship="Self.FK_TblStudent_TblSession" FromRole="TblSession" ToRole="TblStudent" />
+    <NavigationProperty Name="TblStudentAttendances" Relationship="Self.FK_TblStudentAttendance_TblSession" FromRole="TblSession" ToRole="TblStudentAttendance" />
+  </EntityType>
+  <EntityType Name="TblSessionProgrammeSubjectSetting">
+    <Key>
+      <PropertyRef Name="SessionProgrammeSubjectSettingId" />
+    </Key>
+    <Property Name="SessionProgrammeSubjectSettingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="SessionId" Type="Int32" Nullable="false" />
+    <Property Name="ClassId" Type="Int32" Nullable="false" />
+    <Property Name="ProgrammeId" Type="Int32" Nullable="false" />
+    <Property Name="SubjectId" Type="Int32" Nullable="false" />
+    <Property Name="SessionProgrammeSubjectSettingRegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SessionProgrammeSubjectSettingDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TblClass" Relationship="Self.FK_TblSessionProgrammeSubjectSetting_TblClass" FromRole="TblSessionProgrammeSubjectSetting" ToRole="TblClass" />
+    <NavigationProperty Name="TblProgramme" Relationship="Self.FK_TblSessionProgrammeSubjectSetting_TblProgramme" FromRole="TblSessionProgrammeSubjectSetting" ToRole="TblProgramme" />
+    <NavigationProperty Name="TblSession" Relationship="Self.FK_TblSessionProgrammeSubjectSetting_TblSession" FromRole="TblSessionProgrammeSubjectSetting" ToRole="TblSession" />
+    <NavigationProperty Name="TblSubject" Relationship="Self.FK_TblSessionProgrammeSubjectSetting_TblSubject" FromRole="TblSessionProgrammeSubjectSetting" ToRole="TblSubject" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblSessionProgrammeSubjectSetting_TblUser" FromRole="TblSessionProgrammeSubjectSetting" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblStudent">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SessionId" Type="Int32" Nullable="false" />
+    <Property Name="ProgrammeId" Type="Int32" Nullable="false" />
+    <Property Name="ClassId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="StudentName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentFatherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentMotherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentDateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StudentGender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentCNIC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentFNIC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentPhoto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentAdmissionDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StudentPreviousSchool" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="StudentPreviousPercentage" Type="Double" />
+    <Property Name="StudentEmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentReligion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StudentTribeorCaste" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StudentGuardiansOccupationOfProfession" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="StudentGuardiansAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="StudentGuardiansContactNoOffice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StudentGuardiansContactNoResident" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TblClass" Relationship="Self.FK_TblStudent_TblClass" FromRole="TblStudent" ToRole="TblClass" />
+    <NavigationProperty Name="TblExamMarks" Relationship="Self.FK_TblExamMarks_TblStudent" FromRole="TblStudent" ToRole="TblExamMarks" />
+    <NavigationProperty Name="TblProgramme" Relationship="Self.FK_TblStudent_TblProgramme" FromRole="TblStudent" ToRole="TblProgramme" />
+    <NavigationProperty Name="TblSession" Relationship="Self.FK_TblStudent_TblSession" FromRole="TblStudent" ToRole="TblSession" />
+    <NavigationProperty Name="TblStudentPromots" Relationship="Self.FK_TblPromot_TblStudent" FromRole="TblStudent" ToRole="TblStudentPromot" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblStudent_TblUser" FromRole="TblStudent" ToRole="TblUser" />
+    <NavigationProperty Name="TblStudentAttendances" Relationship="Self.FK_TblStudentAttendance_TblStudent" FromRole="TblStudent" ToRole="TblStudentAttendance" />
+    <NavigationProperty Name="TblStudentLeavings" Relationship="Self.FK_TblStudentLeaving_TblStudent" FromRole="TblStudent" ToRole="TblStudentLeaving" />
+    <NavigationProperty Name="TblSubmissionFees" Relationship="Self.FK_TblSubmissionFee_TblStudent" FromRole="TblStudent" ToRole="TblSubmissionFee" />
+  </EntityType>
+  <EntityType Name="TblStudentAttendance">
+    <Key>
+      <PropertyRef Name="StudentAttendanceId" />
+    </Key>
+    <Property Name="StudentAttendanceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="ClassId" Type="Int32" Nullable="false" />
+    <Property Name="SessionId" Type="Int32" Nullable="false" />
+    <Property Name="StudentAttendanceDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="StudentAttendanceTime" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="TblClass" Relationship="Self.FK_TblStudentAttendance_TblClass" FromRole="TblStudentAttendance" ToRole="TblClass" />
+    <NavigationProperty Name="TblSession" Relationship="Self.FK_TblStudentAttendance_TblSession" FromRole="TblStudentAttendance" ToRole="TblSession" />
+    <NavigationProperty Name="TblStudent" Relationship="Self.FK_TblStudentAttendance_TblStudent" FromRole="TblStudentAttendance" ToRole="TblStudent" />
+  </EntityType>
+  <EntityType Name="TblStudentLeaving">
+    <Key>
+      <PropertyRef Name="StudentLeavingId" />
+    </Key>
+    <Property Name="StudentLeavingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="ClassId" Type="Int32" Nullable="false" />
+    <Property Name="StudentLeavingDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StudentLeavingReason" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentLeavingComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StudentLeavingCreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="TblClass" Relationship="Self.FK_TblStudentLeaving_TblClass" FromRole="TblStudentLeaving" ToRole="TblClass" />
+    <NavigationProperty Name="TblStudent" Relationship="Self.FK_TblStudentLeaving_TblStudent" FromRole="TblStudentLeaving" ToRole="TblStudent" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblStudentLeaving_TblUser" FromRole="TblStudentLeaving" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblStudentPromot">
+    <Key>
+      <PropertyRef Name="StudentPromotId" />
+    </Key>
+    <Property Name="StudentPromotId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="ClassId" Type="Int32" Nullable="false" />
+    <Property Name="ProgrammeSessionId" Type="Int32" Nullable="false" />
+    <Property Name="SectionId" Type="Int32" Nullable="false" />
+    <Property Name="StudentPromotDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StudentPromotAnnualFees" Type="Double" Nullable="false" />
+    <Property Name="StudentPromotStatus" Type="Boolean" />
+    <Property Name="StudentPromotSubmit" Type="Boolean" />
+    <NavigationProperty Name="TblClass" Relationship="Self.FK_TblPromot_TblClass" FromRole="TblStudentPromot" ToRole="TblClass" />
+    <NavigationProperty Name="TblProgrammeSession" Relationship="Self.FK_TblPromot_TblProgrammeSession" FromRole="TblStudentPromot" ToRole="TblProgrammeSession" />
+    <NavigationProperty Name="TblSection" Relationship="Self.FK_TblPromot_TblSection" FromRole="TblStudentPromot" ToRole="TblSection" />
+    <NavigationProperty Name="TblSession" Relationship="Self.FK_TblPromot_TblSession" FromRole="TblStudentPromot" ToRole="TblSession" />
+    <NavigationProperty Name="TblStudent" Relationship="Self.FK_TblPromot_TblStudent" FromRole="TblStudentPromot" ToRole="TblStudent" />
+  </EntityType>
+  <EntityType Name="TblSubject">
+    <Key>
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="SubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="SubjectName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubjectRegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SubjectDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TblClassSubjects" Relationship="Self.FK_TblClassSubject_TblSubject" FromRole="TblSubject" ToRole="TblClassSubject" />
+    <NavigationProperty Name="TblSessionProgrammeSubjectSettings" Relationship="Self.FK_TblSessionProgrammeSubjectSetting_TblSubject" FromRole="TblSubject" ToRole="TblSessionProgrammeSubjectSetting" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblSubject_TblUser" FromRole="TblSubject" ToRole="TblUser" />
+    <NavigationProperty Name="TblTimes" Relationship="Self.FK_TblTime_TblSubject" FromRole="TblSubject" ToRole="TblTime" />
+  </EntityType>
+  <EntityType Name="TblSubmissionFee">
+    <Key>
+      <PropertyRef Name="SubmissionFeeId" />
+    </Key>
+    <Property Name="SubmissionFeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="ProgrammeId" Type="Int32" Nullable="false" />
+    <Property Name="ClassId" Type="Int32" Nullable="false" />
+    <Property Name="SubmissionFeeAmount" Type="Double" Nullable="false" />
+    <Property Name="SubmissionFeeDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SubmissionFeeMonth" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubmissionFeeDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TblClass" Relationship="Self.FK_TblSubmissionFee_TblClass" FromRole="TblSubmissionFee" ToRole="TblClass" />
+    <NavigationProperty Name="TblProgramme" Relationship="Self.FK_TblSubmissionFee_TblProgramme" FromRole="TblSubmissionFee" ToRole="TblProgramme" />
+    <NavigationProperty Name="TblStudent" Relationship="Self.FK_TblSubmissionFee_TblStudent" FromRole="TblSubmissionFee" ToRole="TblStudent" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblSubmissionFee_TblUser" FromRole="TblSubmissionFee" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblTime">
+    <Key>
+      <PropertyRef Name="TimeId" />
+    </Key>
+    <Property Name="TimeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="SubjectId" Type="Int32" Nullable="false" />
+    <Property Name="ExamId" Type="Int32" Nullable="false" />
+    <Property Name="RoomId" Type="Int32" Nullable="false" />
+    <Property Name="TimeStart" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="TimeEnd" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="TimeDay" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TimeStatus" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TblExam" Relationship="Self.FK_TblTime_TblExam" FromRole="TblTime" ToRole="TblExam" />
+    <NavigationProperty Name="TblRoom" Relationship="Self.FK_TblTime_TblRoom" FromRole="TblTime" ToRole="TblRoom" />
+    <NavigationProperty Name="TblSubject" Relationship="Self.FK_TblTime_TblSubject" FromRole="TblTime" ToRole="TblSubject" />
+    <NavigationProperty Name="TblUser" Relationship="Self.FK_TblTime_TblUser" FromRole="TblTime" ToRole="TblUser" />
+  </EntityType>
+  <EntityType Name="TblUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+    <Property Name="UserFullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserEmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TblAnnuals" Relationship="Self.FK_TblAnnual_TblUser" FromRole="TblUser" ToRole="TblAnnual" />
+    <NavigationProperty Name="TblDesignations" Relationship="Self.FK_TblDesignation_TblUser" FromRole="TblUser" ToRole="TblDesignation" />
+    <NavigationProperty Name="TblEmployees" Relationship="Self.FK_TblEmployee_TblUser" FromRole="TblUser" ToRole="TblEmployee" />
+    <NavigationProperty Name="TblEmployeeCertificates" Relationship="Self.FK_TblEmployeeCertificate_TblUser" FromRole="TblUser" ToRole="TblEmployeeCertificate" />
+    <NavigationProperty Name="TblEmployeeEducations" Relationship="Self.FK_TblEmployeeEducation_TblUser" FromRole="TblUser" ToRole="TblEmployeeEducation" />
+    <NavigationProperty Name="TblEmployeeLanguages" Relationship="Self.FK_TblEmployeeLanguage_TblUser" FromRole="TblUser" ToRole="TblEmployeeLanguage" />
+    <NavigationProperty Name="TblEmployeeLeavings" Relationship="Self.FK_TblEmployeeLeaving_TblUser" FromRole="TblUser" ToRole="TblEmployeeLeaving" />
+    <NavigationProperty Name="TblEmployeeSalaries" Relationship="Self.FK_TblEmployeeSalary_TblUser" FromRole="TblUser" ToRole="TblEmployeeSalary" />
+    <NavigationProperty Name="TblEmployeeSkills" Relationship="Self.FK_TblEmployeeSkill_TblUser" FromRole="TblUser" ToRole="TblEmployeeSkill" />
+    <NavigationProperty Name="TblEmployeeWorkExperiences" Relationship="Self.FK_TblEmployeeWorkExperience_TblUser" FromRole="TblUser" ToRole="TblEmployeeWorkExperience" />
+    <NavigationProperty Name="TblEvents" Relationship="Self.FK_TblEvent_TblUser" FromRole="TblUser" ToRole="TblEvent" />
+    <NavigationProperty Name="TblExams" Relationship="Self.FK_TblExam_TblUser" FromRole="TblUser" ToRole="TblExam" />
+    <NavigationProperty Name="TblExamMarks" Relationship="Self.FK_TblExamMarks_TblUser" FromRole="TblUser" ToRole="TblExamMarks" />
+    <NavigationProperty Name="TblExamSettings" Relationship="Self.FK_TblExamSetting_TblUser" FromRole="TblUser" ToRole="TblExamSetting" />
+    <NavigationProperty Name="TblExpenses" Relationship="Self.FK_TblExpense_TblUser" FromRole="TblUser" ToRole="TblExpense" />
+    <NavigationProperty Name="TblExpenseTypes" Relationship="Self.FK_TblExpenseType_TblUser" FromRole="TblUser" ToRole="TblExpenseType" />
+    <NavigationProperty Name="TblProgrammes" Relationship="Self.FK_TblProgramme_TblUser" FromRole="TblUser" ToRole="TblProgramme" />
+    <NavigationProperty Name="TblProgrammeSessions" Relationship="Self.FK_TblProgrammeSession_TblUser" FromRole="TblUser" ToRole="TblProgrammeSession" />
+    <NavigationProperty Name="TblRooms" Relationship="Self.FK_TblRoom_TblUser" FromRole="TblUser" ToRole="TblRoom" />
+    <NavigationProperty Name="TblSections" Relationship="Self.FK_TblSection_TblUser" FromRole="TblUser" ToRole="TblSection" />
+    <NavigationProperty Name="TblSessions" Relationship="Self.FK_tblSession_TblUser" FromRole="TblUser" ToRole="TblSession" />
+    <NavigationProperty Name="TblSessionProgrammeSubjectSettings" Relationship="Self.FK_TblSessionProgrammeSubjectSetting_TblUser" FromRole="TblUser" ToRole="TblSessionProgrammeSubjectSetting" />
+    <NavigationProperty Name="TblStudents" Relationship="Self.FK_TblStudent_TblUser" FromRole="TblUser" ToRole="TblStudent" />
+    <NavigationProperty Name="TblStudentLeavings" Relationship="Self.FK_TblStudentLeaving_TblUser" FromRole="TblUser" ToRole="TblStudentLeaving" />
+    <NavigationProperty Name="TblSubjects" Relationship="Self.FK_TblSubject_TblUser" FromRole="TblUser" ToRole="TblSubject" />
+    <NavigationProperty Name="TblSubmissionFees" Relationship="Self.FK_TblSubmissionFee_TblUser" FromRole="TblUser" ToRole="TblSubmissionFee" />
+    <NavigationProperty Name="TblTimes" Relationship="Self.FK_TblTime_TblUser" FromRole="TblUser" ToRole="TblTime" />
+    <NavigationProperty Name="TblUserType" Relationship="Self.FK_TblUser_TblUserType" FromRole="TblUser" ToRole="TblUserType" />
+  </EntityType>
+  <EntityType Name="TblUserType">
+    <Key>
+      <PropertyRef Name="UserTypeId" />
+    </Key>
+    <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserTypeDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TblUsers" Relationship="Self.FK_TblUser_TblUserType" FromRole="TblUserType" ToRole="TblUser" />
+  </EntityType>
+  <Association Name="FK_TblAnnual_TblProgramme">
+    <End Role="TblProgramme" Type="Self.TblProgramme" Multiplicity="1" />
+    <End Role="TblAnnual" Type="Self.TblAnnual" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblProgramme">
+        <PropertyRef Name="ProgrammeId" />
+      </Principal>
+      <Dependent Role="TblAnnual">
+        <PropertyRef Name="ProgrammeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblAnnual_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblAnnual" Type="Self.TblAnnual" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblAnnual">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblClassSubject_TblClass">
+    <End Role="TblClass" Type="Self.TblClass" Multiplicity="1" />
+    <End Role="TblClassSubject" Type="Self.TblClassSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblClass">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="TblClassSubject">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblExamMarks_TblClass">
+    <End Role="TblClass" Type="Self.TblClass" Multiplicity="1" />
+    <End Role="TblExamMarks" Type="Self.TblExamMark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblClass">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="TblExamMarks">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblPromot_TblClass">
+    <End Role="TblClass" Type="Self.TblClass" Multiplicity="1" />
+    <End Role="TblStudentPromot" Type="Self.TblStudentPromot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblClass">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="TblStudentPromot">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSessionProgrammeSubjectSetting_TblClass">
+    <End Role="TblClass" Type="Self.TblClass" Multiplicity="1" />
+    <End Role="TblSessionProgrammeSubjectSetting" Type="Self.TblSessionProgrammeSubjectSetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblClass">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="TblSessionProgrammeSubjectSetting">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblStudent_TblClass">
+    <End Role="TblClass" Type="Self.TblClass" Multiplicity="1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblClass">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblStudentAttendance_TblClass">
+    <End Role="TblClass" Type="Self.TblClass" Multiplicity="1" />
+    <End Role="TblStudentAttendance" Type="Self.TblStudentAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblClass">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="TblStudentAttendance">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblStudentLeaving_TblClass">
+    <End Role="TblClass" Type="Self.TblClass" Multiplicity="1" />
+    <End Role="TblStudentLeaving" Type="Self.TblStudentLeaving" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblClass">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="TblStudentLeaving">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSubmissionFee_TblClass">
+    <End Role="TblClass" Type="Self.TblClass" Multiplicity="1" />
+    <End Role="TblSubmissionFee" Type="Self.TblSubmissionFee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblClass">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="TblSubmissionFee">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblClassSubject_TblSubject">
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="1" />
+    <End Role="TblClassSubject" Type="Self.TblClassSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubject">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="TblClassSubject">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblDesignation_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblDesignation" Type="Self.TblDesignation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblDesignation">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployee_TblDesignation">
+    <End Role="TblDesignation" Type="Self.TblDesignation" Multiplicity="1" />
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblDesignation">
+        <PropertyRef Name="DesignationId" />
+      </Principal>
+      <Dependent Role="TblEmployee">
+        <PropertyRef Name="DesignationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployee_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblEmployee">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeAttendance_TblEmployee">
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="1" />
+    <End Role="TblEmployeeAttendance" Type="Self.TblEmployeeAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblEmployee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="TblEmployeeAttendance">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeLeaving_TblEmployee">
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="1" />
+    <End Role="TblEmployeeLeaving" Type="Self.TblEmployeeLeaving" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblEmployee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="TblEmployeeLeaving">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeSalary_TblEmployee">
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="1" />
+    <End Role="TblEmployeeSalary" Type="Self.TblEmployeeSalary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblEmployee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="TblEmployeeSalary">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeCertificate_TblEmployeeResume">
+    <End Role="TblEmployeeResume" Type="Self.TblEmployeeResume" Multiplicity="0..1" />
+    <End Role="TblEmployeeCertificate" Type="Self.TblEmployeeCertificate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblEmployeeResume">
+        <PropertyRef Name="EmployeeResumeId" />
+      </Principal>
+      <Dependent Role="TblEmployeeCertificate">
+        <PropertyRef Name="EmployeeResumeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeCertificate_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblEmployeeCertificate" Type="Self.TblEmployeeCertificate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblEmployeeCertificate">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeEducation_TblEmployeeResume">
+    <End Role="TblEmployeeResume" Type="Self.TblEmployeeResume" Multiplicity="0..1" />
+    <End Role="TblEmployeeEducation" Type="Self.TblEmployeeEducation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblEmployeeResume">
+        <PropertyRef Name="EmployeeResumeId" />
+      </Principal>
+      <Dependent Role="TblEmployeeEducation">
+        <PropertyRef Name="EmployeeResumeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeEducation_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblEmployeeEducation" Type="Self.TblEmployeeEducation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblEmployeeEducation">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeLanguage_TblEmployeeResume">
+    <End Role="TblEmployeeResume" Type="Self.TblEmployeeResume" Multiplicity="0..1" />
+    <End Role="TblEmployeeLanguage" Type="Self.TblEmployeeLanguage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblEmployeeResume">
+        <PropertyRef Name="EmployeeResumeId" />
+      </Principal>
+      <Dependent Role="TblEmployeeLanguage">
+        <PropertyRef Name="EmployeeResumeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeLanguage_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblEmployeeLanguage" Type="Self.TblEmployeeLanguage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblEmployeeLanguage">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeLeaving_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblEmployeeLeaving" Type="Self.TblEmployeeLeaving" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblEmployeeLeaving">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeSkill_TblEmployeeResume">
+    <End Role="TblEmployeeResume" Type="Self.TblEmployeeResume" Multiplicity="0..1" />
+    <End Role="TblEmployeeSkill" Type="Self.TblEmployeeSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblEmployeeResume">
+        <PropertyRef Name="EmployeeResumeId" />
+      </Principal>
+      <Dependent Role="TblEmployeeSkill">
+        <PropertyRef Name="EmployeeResumeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeWorkExperience_TblEmployeeResume">
+    <End Role="TblEmployeeResume" Type="Self.TblEmployeeResume" Multiplicity="0..1" />
+    <End Role="TblEmployeeWorkExperience" Type="Self.TblEmployeeWorkExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblEmployeeResume">
+        <PropertyRef Name="EmployeeResumeId" />
+      </Principal>
+      <Dependent Role="TblEmployeeWorkExperience">
+        <PropertyRef Name="EmployeeResumeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeSalary_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblEmployeeSalary" Type="Self.TblEmployeeSalary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblEmployeeSalary">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeSkill_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblEmployeeSkill" Type="Self.TblEmployeeSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblEmployeeSkill">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEmployeeWorkExperience_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblEmployeeWorkExperience" Type="Self.TblEmployeeWorkExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblEmployeeWorkExperience">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblEvent_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblEvent" Type="Self.TblEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblEvent">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblExam_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblExam" Type="Self.TblExam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblExam">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblExamMarks_TblExam">
+    <End Role="TblExam" Type="Self.TblExam" Multiplicity="1" />
+    <End Role="TblExamMarks" Type="Self.TblExamMark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblExam">
+        <PropertyRef Name="ExamId" />
+      </Principal>
+      <Dependent Role="TblExamMarks">
+        <PropertyRef Name="ExamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblExamSetting_TblExam">
+    <End Role="TblExam" Type="Self.TblExam" Multiplicity="1" />
+    <End Role="TblExamSetting" Type="Self.TblExamSetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblExam">
+        <PropertyRef Name="ExamId" />
+      </Principal>
+      <Dependent Role="TblExamSetting">
+        <PropertyRef Name="ExamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblTime_TblExam">
+    <End Role="TblExam" Type="Self.TblExam" Multiplicity="1" />
+    <End Role="TblTime" Type="Self.TblTime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblExam">
+        <PropertyRef Name="ExamId" />
+      </Principal>
+      <Dependent Role="TblTime">
+        <PropertyRef Name="ExamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblExamMarks_TblStudent">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblExamMarks" Type="Self.TblExamMark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="TblExamMarks">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblExamMarks_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblExamMarks" Type="Self.TblExamMark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblExamMarks">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblExamSetting_TblProgrammeSession">
+    <End Role="TblProgrammeSession" Type="Self.TblProgrammeSession" Multiplicity="1" />
+    <End Role="TblExamSetting" Type="Self.TblExamSetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblProgrammeSession">
+        <PropertyRef Name="ProgrammeSessionId" />
+      </Principal>
+      <Dependent Role="TblExamSetting">
+        <PropertyRef Name="ProgrammeSessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblExamSetting_tblSession">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblExamSetting" Type="Self.TblExamSetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="SessionId" />
+      </Principal>
+      <Dependent Role="TblExamSetting">
+        <PropertyRef Name="SessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblExamSetting_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblExamSetting" Type="Self.TblExamSetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblExamSetting">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblExpense_TblExpenseType">
+    <End Role="TblExpenseType" Type="Self.TblExpenseType" Multiplicity="1" />
+    <End Role="TblExpense" Type="Self.TblExpense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblExpenseType">
+        <PropertyRef Name="ExpenseTypeId" />
+      </Principal>
+      <Dependent Role="TblExpense">
+        <PropertyRef Name="ExpenseTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblExpense_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="0..1" />
+    <End Role="TblExpense" Type="Self.TblExpense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblExpense">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblExpenseType_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblExpenseType" Type="Self.TblExpenseType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblExpenseType">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblProgramme_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblProgramme" Type="Self.TblProgramme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblProgramme">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblProgrammeSession_TblProgramme">
+    <End Role="TblProgramme" Type="Self.TblProgramme" Multiplicity="1" />
+    <End Role="TblProgrammeSession" Type="Self.TblProgrammeSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblProgramme">
+        <PropertyRef Name="ProgrammeId" />
+      </Principal>
+      <Dependent Role="TblProgrammeSession">
+        <PropertyRef Name="ProgrammeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSessionProgrammeSubjectSetting_TblProgramme">
+    <End Role="TblProgramme" Type="Self.TblProgramme" Multiplicity="1" />
+    <End Role="TblSessionProgrammeSubjectSetting" Type="Self.TblSessionProgrammeSubjectSetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblProgramme">
+        <PropertyRef Name="ProgrammeId" />
+      </Principal>
+      <Dependent Role="TblSessionProgrammeSubjectSetting">
+        <PropertyRef Name="ProgrammeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblStudent_TblProgramme">
+    <End Role="TblProgramme" Type="Self.TblProgramme" Multiplicity="1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblProgramme">
+        <PropertyRef Name="ProgrammeId" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="ProgrammeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSubmissionFee_TblProgramme">
+    <End Role="TblProgramme" Type="Self.TblProgramme" Multiplicity="1" />
+    <End Role="TblSubmissionFee" Type="Self.TblSubmissionFee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblProgramme">
+        <PropertyRef Name="ProgrammeId" />
+      </Principal>
+      <Dependent Role="TblSubmissionFee">
+        <PropertyRef Name="ProgrammeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblProgrammeSession_tblSession">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblProgrammeSession" Type="Self.TblProgrammeSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="SessionId" />
+      </Principal>
+      <Dependent Role="TblProgrammeSession">
+        <PropertyRef Name="SessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblProgrammeSession_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblProgrammeSession" Type="Self.TblProgrammeSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblProgrammeSession">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblPromot_TblProgrammeSession">
+    <End Role="TblProgrammeSession" Type="Self.TblProgrammeSession" Multiplicity="1" />
+    <End Role="TblStudentPromot" Type="Self.TblStudentPromot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblProgrammeSession">
+        <PropertyRef Name="ProgrammeSessionId" />
+      </Principal>
+      <Dependent Role="TblStudentPromot">
+        <PropertyRef Name="ProgrammeSessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblRoom_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblRoom" Type="Self.TblRoom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblRoom">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblTime_TblRoom">
+    <End Role="TblRoom" Type="Self.TblRoom" Multiplicity="1" />
+    <End Role="TblTime" Type="Self.TblTime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblRoom">
+        <PropertyRef Name="RoomId" />
+      </Principal>
+      <Dependent Role="TblTime">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblPromot_TblSection">
+    <End Role="TblSection" Type="Self.TblSection" Multiplicity="1" />
+    <End Role="TblStudentPromot" Type="Self.TblStudentPromot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSection">
+        <PropertyRef Name="SectionId" />
+      </Principal>
+      <Dependent Role="TblStudentPromot">
+        <PropertyRef Name="SectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSection_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblSection" Type="Self.TblSection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblSection">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblPromot_TblSession">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblStudentPromot" Type="Self.TblStudentPromot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="SessionId" />
+      </Principal>
+      <Dependent Role="TblStudentPromot">
+        <PropertyRef Name="SectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSession_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSessionProgrammeSubjectSetting_TblSession">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSessionProgrammeSubjectSetting" Type="Self.TblSessionProgrammeSubjectSetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="SessionId" />
+      </Principal>
+      <Dependent Role="TblSessionProgrammeSubjectSetting">
+        <PropertyRef Name="SessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblStudent_TblSession">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="SessionId" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="SessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblStudentAttendance_TblSession">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblStudentAttendance" Type="Self.TblStudentAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="SessionId" />
+      </Principal>
+      <Dependent Role="TblStudentAttendance">
+        <PropertyRef Name="SessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSessionProgrammeSubjectSetting_TblSubject">
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="1" />
+    <End Role="TblSessionProgrammeSubjectSetting" Type="Self.TblSessionProgrammeSubjectSetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubject">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="TblSessionProgrammeSubjectSetting">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSessionProgrammeSubjectSetting_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblSessionProgrammeSubjectSetting" Type="Self.TblSessionProgrammeSubjectSetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblSessionProgrammeSubjectSetting">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblPromot_TblStudent">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblStudentPromot" Type="Self.TblStudentPromot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="TblStudentPromot">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblStudent_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblStudentAttendance_TblStudent">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblStudentAttendance" Type="Self.TblStudentAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="TblStudentAttendance">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblStudentLeaving_TblStudent">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblStudentLeaving" Type="Self.TblStudentLeaving" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="TblStudentLeaving">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSubmissionFee_TblStudent">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblSubmissionFee" Type="Self.TblSubmissionFee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="TblSubmissionFee">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblStudentLeaving_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblStudentLeaving" Type="Self.TblStudentLeaving" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblStudentLeaving">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSubject_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblSubject">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblTime_TblSubject">
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="1" />
+    <End Role="TblTime" Type="Self.TblTime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubject">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="TblTime">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblSubmissionFee_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblSubmissionFee" Type="Self.TblSubmissionFee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblSubmissionFee">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblTime_TblUser">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblTime" Type="Self.TblTime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TblTime">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblUser_TblUserType">
+    <End Role="TblUserType" Type="Self.TblUserType" Multiplicity="1" />
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserType">
+        <PropertyRef Name="UserTypeId" />
+      </Principal>
+      <Dependent Role="TblUser">
+        <PropertyRef Name="UserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbSchoolManagementSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TblAnnuals" EntityType="Self.TblAnnual" />
+    <EntitySet Name="TblClasses" EntityType="Self.TblClass" />
+    <EntitySet Name="TblClassSubjects" EntityType="Self.TblClassSubject" />
+    <EntitySet Name="TblDesignations" EntityType="Self.TblDesignation" />
+    <EntitySet Name="TblEmployees" EntityType="Self.TblEmployee" />
+    <EntitySet Name="TblEmployeeAttendances" EntityType="Self.TblEmployeeAttendance" />
+    <EntitySet Name="TblEmployeeCertificates" EntityType="Self.TblEmployeeCertificate" />
+    <EntitySet Name="TblEmployeeEducations" EntityType="Self.TblEmployeeEducation" />
+    <EntitySet Name="TblEmployeeLanguages" EntityType="Self.TblEmployeeLanguage" />
+    <EntitySet Name="TblEmployeeLeavings" EntityType="Self.TblEmployeeLeaving" />
+    <EntitySet Name="TblEmployeeResumes" EntityType="Self.TblEmployeeResume" />
+    <EntitySet Name="TblEmployeeSalaries" EntityType="Self.TblEmployeeSalary" />
+    <EntitySet Name="TblEmployeeSkills" EntityType="Self.TblEmployeeSkill" />
+    <EntitySet Name="TblEmployeeWorkExperiences" EntityType="Self.TblEmployeeWorkExperience" />
+    <EntitySet Name="TblEvents" EntityType="Self.TblEvent" />
+    <EntitySet Name="TblExams" EntityType="Self.TblExam" />
+    <EntitySet Name="TblExamMarks" EntityType="Self.TblExamMark" />
+    <EntitySet Name="TblExamSettings" EntityType="Self.TblExamSetting" />
+    <EntitySet Name="TblExpenses" EntityType="Self.TblExpense" />
+    <EntitySet Name="TblExpenseTypes" EntityType="Self.TblExpenseType" />
+    <EntitySet Name="TblProgrammes" EntityType="Self.TblProgramme" />
+    <EntitySet Name="TblProgrammeSessions" EntityType="Self.TblProgrammeSession" />
+    <EntitySet Name="TblRooms" EntityType="Self.TblRoom" />
+    <EntitySet Name="TblSections" EntityType="Self.TblSection" />
+    <EntitySet Name="TblSessions" EntityType="Self.TblSession" />
+    <EntitySet Name="TblSessionProgrammeSubjectSettings" EntityType="Self.TblSessionProgrammeSubjectSetting" />
+    <EntitySet Name="TblStudents" EntityType="Self.TblStudent" />
+    <EntitySet Name="TblStudentAttendances" EntityType="Self.TblStudentAttendance" />
+    <EntitySet Name="TblStudentLeavings" EntityType="Self.TblStudentLeaving" />
+    <EntitySet Name="TblStudentPromots" EntityType="Self.TblStudentPromot" />
+    <EntitySet Name="TblSubjects" EntityType="Self.TblSubject" />
+    <EntitySet Name="TblSubmissionFees" EntityType="Self.TblSubmissionFee" />
+    <EntitySet Name="TblTimes" EntityType="Self.TblTime" />
+    <EntitySet Name="TblUsers" EntityType="Self.TblUser" />
+    <EntitySet Name="TblUserTypes" EntityType="Self.TblUserType" />
+    <AssociationSet Name="FK_TblAnnual_TblProgramme" Association="Self.FK_TblAnnual_TblProgramme">
+      <End Role="TblProgramme" EntitySet="TblProgrammes" />
+      <End Role="TblAnnual" EntitySet="TblAnnuals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblAnnual_TblUser" Association="Self.FK_TblAnnual_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblAnnual" EntitySet="TblAnnuals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblClassSubject_TblClass" Association="Self.FK_TblClassSubject_TblClass">
+      <End Role="TblClass" EntitySet="TblClasses" />
+      <End Role="TblClassSubject" EntitySet="TblClassSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblExamMarks_TblClass" Association="Self.FK_TblExamMarks_TblClass">
+      <End Role="TblClass" EntitySet="TblClasses" />
+      <End Role="TblExamMarks" EntitySet="TblExamMarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblPromot_TblClass" Association="Self.FK_TblPromot_TblClass">
+      <End Role="TblClass" EntitySet="TblClasses" />
+      <End Role="TblStudentPromot" EntitySet="TblStudentPromots" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSessionProgrammeSubjectSetting_TblClass" Association="Self.FK_TblSessionProgrammeSubjectSetting_TblClass">
+      <End Role="TblClass" EntitySet="TblClasses" />
+      <End Role="TblSessionProgrammeSubjectSetting" EntitySet="TblSessionProgrammeSubjectSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblStudent_TblClass" Association="Self.FK_TblStudent_TblClass">
+      <End Role="TblClass" EntitySet="TblClasses" />
+      <End Role="TblStudent" EntitySet="TblStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblStudentAttendance_TblClass" Association="Self.FK_TblStudentAttendance_TblClass">
+      <End Role="TblClass" EntitySet="TblClasses" />
+      <End Role="TblStudentAttendance" EntitySet="TblStudentAttendances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblStudentLeaving_TblClass" Association="Self.FK_TblStudentLeaving_TblClass">
+      <End Role="TblClass" EntitySet="TblClasses" />
+      <End Role="TblStudentLeaving" EntitySet="TblStudentLeavings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSubmissionFee_TblClass" Association="Self.FK_TblSubmissionFee_TblClass">
+      <End Role="TblClass" EntitySet="TblClasses" />
+      <End Role="TblSubmissionFee" EntitySet="TblSubmissionFees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblClassSubject_TblSubject" Association="Self.FK_TblClassSubject_TblSubject">
+      <End Role="TblSubject" EntitySet="TblSubjects" />
+      <End Role="TblClassSubject" EntitySet="TblClassSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblDesignation_TblUser" Association="Self.FK_TblDesignation_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblDesignation" EntitySet="TblDesignations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployee_TblDesignation" Association="Self.FK_TblEmployee_TblDesignation">
+      <End Role="TblDesignation" EntitySet="TblDesignations" />
+      <End Role="TblEmployee" EntitySet="TblEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployee_TblUser" Association="Self.FK_TblEmployee_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblEmployee" EntitySet="TblEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeAttendance_TblEmployee" Association="Self.FK_TblEmployeeAttendance_TblEmployee">
+      <End Role="TblEmployee" EntitySet="TblEmployees" />
+      <End Role="TblEmployeeAttendance" EntitySet="TblEmployeeAttendances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeLeaving_TblEmployee" Association="Self.FK_TblEmployeeLeaving_TblEmployee">
+      <End Role="TblEmployee" EntitySet="TblEmployees" />
+      <End Role="TblEmployeeLeaving" EntitySet="TblEmployeeLeavings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeSalary_TblEmployee" Association="Self.FK_TblEmployeeSalary_TblEmployee">
+      <End Role="TblEmployee" EntitySet="TblEmployees" />
+      <End Role="TblEmployeeSalary" EntitySet="TblEmployeeSalaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeCertificate_TblEmployeeResume" Association="Self.FK_TblEmployeeCertificate_TblEmployeeResume">
+      <End Role="TblEmployeeResume" EntitySet="TblEmployeeResumes" />
+      <End Role="TblEmployeeCertificate" EntitySet="TblEmployeeCertificates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeCertificate_TblUser" Association="Self.FK_TblEmployeeCertificate_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblEmployeeCertificate" EntitySet="TblEmployeeCertificates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeEducation_TblEmployeeResume" Association="Self.FK_TblEmployeeEducation_TblEmployeeResume">
+      <End Role="TblEmployeeResume" EntitySet="TblEmployeeResumes" />
+      <End Role="TblEmployeeEducation" EntitySet="TblEmployeeEducations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeEducation_TblUser" Association="Self.FK_TblEmployeeEducation_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblEmployeeEducation" EntitySet="TblEmployeeEducations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeLanguage_TblEmployeeResume" Association="Self.FK_TblEmployeeLanguage_TblEmployeeResume">
+      <End Role="TblEmployeeResume" EntitySet="TblEmployeeResumes" />
+      <End Role="TblEmployeeLanguage" EntitySet="TblEmployeeLanguages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeLanguage_TblUser" Association="Self.FK_TblEmployeeLanguage_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblEmployeeLanguage" EntitySet="TblEmployeeLanguages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeLeaving_TblUser" Association="Self.FK_TblEmployeeLeaving_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblEmployeeLeaving" EntitySet="TblEmployeeLeavings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeSkill_TblEmployeeResume" Association="Self.FK_TblEmployeeSkill_TblEmployeeResume">
+      <End Role="TblEmployeeResume" EntitySet="TblEmployeeResumes" />
+      <End Role="TblEmployeeSkill" EntitySet="TblEmployeeSkills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeWorkExperience_TblEmployeeResume" Association="Self.FK_TblEmployeeWorkExperience_TblEmployeeResume">
+      <End Role="TblEmployeeResume" EntitySet="TblEmployeeResumes" />
+      <End Role="TblEmployeeWorkExperience" EntitySet="TblEmployeeWorkExperiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeSalary_TblUser" Association="Self.FK_TblEmployeeSalary_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblEmployeeSalary" EntitySet="TblEmployeeSalaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeSkill_TblUser" Association="Self.FK_TblEmployeeSkill_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblEmployeeSkill" EntitySet="TblEmployeeSkills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEmployeeWorkExperience_TblUser" Association="Self.FK_TblEmployeeWorkExperience_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblEmployeeWorkExperience" EntitySet="TblEmployeeWorkExperiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblEvent_TblUser" Association="Self.FK_TblEvent_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblEvent" EntitySet="TblEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblExam_TblUser" Association="Self.FK_TblExam_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblExam" EntitySet="TblExams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblExamMarks_TblExam" Association="Self.FK_TblExamMarks_TblExam">
+      <End Role="TblExam" EntitySet="TblExams" />
+      <End Role="TblExamMarks" EntitySet="TblExamMarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblExamSetting_TblExam" Association="Self.FK_TblExamSetting_TblExam">
+      <End Role="TblExam" EntitySet="TblExams" />
+      <End Role="TblExamSetting" EntitySet="TblExamSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblTime_TblExam" Association="Self.FK_TblTime_TblExam">
+      <End Role="TblExam" EntitySet="TblExams" />
+      <End Role="TblTime" EntitySet="TblTimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblExamMarks_TblStudent" Association="Self.FK_TblExamMarks_TblStudent">
+      <End Role="TblStudent" EntitySet="TblStudents" />
+      <End Role="TblExamMarks" EntitySet="TblExamMarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblExamMarks_TblUser" Association="Self.FK_TblExamMarks_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblExamMarks" EntitySet="TblExamMarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblExamSetting_TblProgrammeSession" Association="Self.FK_TblExamSetting_TblProgrammeSession">
+      <End Role="TblProgrammeSession" EntitySet="TblProgrammeSessions" />
+      <End Role="TblExamSetting" EntitySet="TblExamSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblExamSetting_tblSession" Association="Self.FK_TblExamSetting_tblSession">
+      <End Role="TblSession" EntitySet="TblSessions" />
+      <End Role="TblExamSetting" EntitySet="TblExamSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblExamSetting_TblUser" Association="Self.FK_TblExamSetting_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblExamSetting" EntitySet="TblExamSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblExpense_TblExpenseType" Association="Self.FK_TblExpense_TblExpenseType">
+      <End Role="TblExpenseType" EntitySet="TblExpenseTypes" />
+      <End Role="TblExpense" EntitySet="TblExpenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblExpense_TblUser" Association="Self.FK_TblExpense_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblExpense" EntitySet="TblExpenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblExpenseType_TblUser" Association="Self.FK_TblExpenseType_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblExpenseType" EntitySet="TblExpenseTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblProgramme_TblUser" Association="Self.FK_TblProgramme_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblProgramme" EntitySet="TblProgrammes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblProgrammeSession_TblProgramme" Association="Self.FK_TblProgrammeSession_TblProgramme">
+      <End Role="TblProgramme" EntitySet="TblProgrammes" />
+      <End Role="TblProgrammeSession" EntitySet="TblProgrammeSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSessionProgrammeSubjectSetting_TblProgramme" Association="Self.FK_TblSessionProgrammeSubjectSetting_TblProgramme">
+      <End Role="TblProgramme" EntitySet="TblProgrammes" />
+      <End Role="TblSessionProgrammeSubjectSetting" EntitySet="TblSessionProgrammeSubjectSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblStudent_TblProgramme" Association="Self.FK_TblStudent_TblProgramme">
+      <End Role="TblProgramme" EntitySet="TblProgrammes" />
+      <End Role="TblStudent" EntitySet="TblStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSubmissionFee_TblProgramme" Association="Self.FK_TblSubmissionFee_TblProgramme">
+      <End Role="TblProgramme" EntitySet="TblProgrammes" />
+      <End Role="TblSubmissionFee" EntitySet="TblSubmissionFees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblProgrammeSession_tblSession" Association="Self.FK_TblProgrammeSession_tblSession">
+      <End Role="TblSession" EntitySet="TblSessions" />
+      <End Role="TblProgrammeSession" EntitySet="TblProgrammeSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblProgrammeSession_TblUser" Association="Self.FK_TblProgrammeSession_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblProgrammeSession" EntitySet="TblProgrammeSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblPromot_TblProgrammeSession" Association="Self.FK_TblPromot_TblProgrammeSession">
+      <End Role="TblProgrammeSession" EntitySet="TblProgrammeSessions" />
+      <End Role="TblStudentPromot" EntitySet="TblStudentPromots" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblRoom_TblUser" Association="Self.FK_TblRoom_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblRoom" EntitySet="TblRooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblTime_TblRoom" Association="Self.FK_TblTime_TblRoom">
+      <End Role="TblRoom" EntitySet="TblRooms" />
+      <End Role="TblTime" EntitySet="TblTimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblPromot_TblSection" Association="Self.FK_TblPromot_TblSection">
+      <End Role="TblSection" EntitySet="TblSections" />
+      <End Role="TblStudentPromot" EntitySet="TblStudentPromots" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSection_TblUser" Association="Self.FK_TblSection_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblSection" EntitySet="TblSections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblPromot_TblSession" Association="Self.FK_TblPromot_TblSession">
+      <End Role="TblSession" EntitySet="TblSessions" />
+      <End Role="TblStudentPromot" EntitySet="TblStudentPromots" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSession_TblUser" Association="Self.FK_tblSession_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblSession" EntitySet="TblSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSessionProgrammeSubjectSetting_TblSession" Association="Self.FK_TblSessionProgrammeSubjectSetting_TblSession">
+      <End Role="TblSession" EntitySet="TblSessions" />
+      <End Role="TblSessionProgrammeSubjectSetting" EntitySet="TblSessionProgrammeSubjectSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblStudent_TblSession" Association="Self.FK_TblStudent_TblSession">
+      <End Role="TblSession" EntitySet="TblSessions" />
+      <End Role="TblStudent" EntitySet="TblStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblStudentAttendance_TblSession" Association="Self.FK_TblStudentAttendance_TblSession">
+      <End Role="TblSession" EntitySet="TblSessions" />
+      <End Role="TblStudentAttendance" EntitySet="TblStudentAttendances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSessionProgrammeSubjectSetting_TblSubject" Association="Self.FK_TblSessionProgrammeSubjectSetting_TblSubject">
+      <End Role="TblSubject" EntitySet="TblSubjects" />
+      <End Role="TblSessionProgrammeSubjectSetting" EntitySet="TblSessionProgrammeSubjectSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSessionProgrammeSubjectSetting_TblUser" Association="Self.FK_TblSessionProgrammeSubjectSetting_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblSessionProgrammeSubjectSetting" EntitySet="TblSessionProgrammeSubjectSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblPromot_TblStudent" Association="Self.FK_TblPromot_TblStudent">
+      <End Role="TblStudent" EntitySet="TblStudents" />
+      <End Role="TblStudentPromot" EntitySet="TblStudentPromots" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblStudent_TblUser" Association="Self.FK_TblStudent_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblStudent" EntitySet="TblStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblStudentAttendance_TblStudent" Association="Self.FK_TblStudentAttendance_TblStudent">
+      <End Role="TblStudent" EntitySet="TblStudents" />
+      <End Role="TblStudentAttendance" EntitySet="TblStudentAttendances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblStudentLeaving_TblStudent" Association="Self.FK_TblStudentLeaving_TblStudent">
+      <End Role="TblStudent" EntitySet="TblStudents" />
+      <End Role="TblStudentLeaving" EntitySet="TblStudentLeavings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSubmissionFee_TblStudent" Association="Self.FK_TblSubmissionFee_TblStudent">
+      <End Role="TblStudent" EntitySet="TblStudents" />
+      <End Role="TblSubmissionFee" EntitySet="TblSubmissionFees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblStudentLeaving_TblUser" Association="Self.FK_TblStudentLeaving_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblStudentLeaving" EntitySet="TblStudentLeavings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSubject_TblUser" Association="Self.FK_TblSubject_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblSubject" EntitySet="TblSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblTime_TblSubject" Association="Self.FK_TblTime_TblSubject">
+      <End Role="TblSubject" EntitySet="TblSubjects" />
+      <End Role="TblTime" EntitySet="TblTimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblSubmissionFee_TblUser" Association="Self.FK_TblSubmissionFee_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblSubmissionFee" EntitySet="TblSubmissionFees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblTime_TblUser" Association="Self.FK_TblTime_TblUser">
+      <End Role="TblUser" EntitySet="TblUsers" />
+      <End Role="TblTime" EntitySet="TblTimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblUser_TblUserType" Association="Self.FK_TblUser_TblUserType">
+      <End Role="TblUserType" EntitySet="TblUserTypes" />
+      <End Role="TblUser" EntitySet="TblUsers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,57 @@
+﻿@model DatabaseAccess.TblExam
+
+@{
+    ViewBag.Title = "Exam's Details";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Exam Title :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamTitle)
+        </dd>
+
+        <dt>
+            Start Date :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamStartDate)
+        </dd>
+
+        <dt>
+            End Date :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamEndDate)
+        </dd>
+
+        <dt>
+            Description :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamDescription)
+        </dd>
+
+        <dt>
+            User Name :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblUser.UserFullName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ExamId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</p>

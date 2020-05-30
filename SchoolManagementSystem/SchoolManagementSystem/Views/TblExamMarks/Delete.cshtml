@@ -1,0 +1,73 @@
+﻿@model DatabaseAccess.TblExamMark
+
+@{
+    ViewBag.Title = "Exam Mark Delete";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Student Name :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblStudent.StudentName)
+        </dd>
+
+        <dt>
+            Class :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblClass.ClassName)
+        </dd>
+
+        <dt>
+            Exam Title :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblExam.ExamTitle)
+        </dd>
+
+        <dt>
+            Obtain Marks :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamMarksObtain)
+        </dd>
+
+        <dt>
+            Total Marks :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamMarksTotal)
+        </dd>
+
+        <dt>
+            User Name :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblUser.UserName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

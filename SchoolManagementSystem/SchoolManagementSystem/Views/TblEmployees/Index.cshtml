@@ -1,0 +1,84 @@
+﻿@model IEnumerable<DatabaseAccess.TblEmployee>
+
+@{
+    ViewBag.Title = "View All Employee List";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All Employee Information</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Contact No
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            Salary
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                           @if (! string.IsNullOrEmpty(item.EmployeePhoto)) {
+                               <img src="@Url.Content(item.EmployeePhoto)" alt="Image" style="width:100px; height:150px; max-width:100%; height:auto;"/>
+                           }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeContactNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeAddress)
+                        </td>                      
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeBasicSalary)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeStatus)
+                        </td>
+                        <td class="btn-group">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeId }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Details", "Details", new { id = item.EmployeeId }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeId }, new { @class = "btn btn-danger" })
+                            @Html.ActionLink("Add Resume", "CheckCV","Resume", new { id = item.EmployeeId }, new { @class = "btn btn-success" })
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

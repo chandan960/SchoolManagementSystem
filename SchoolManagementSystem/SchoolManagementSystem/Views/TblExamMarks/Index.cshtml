@@ -1,0 +1,80 @@
+﻿@model IEnumerable<DatabaseAccess.TblExamMark>
+
+@{
+    ViewBag.Title = "View All Exam Mark List";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All Exam Mark Information</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            Student Name
+                        </th>
+                        <th>
+                            Class
+                        </th>
+                        <th>
+                            Exam Title
+                        </th>
+                        <th>
+                            Obtan Marks
+                        </th>
+                        <th>
+                            Total Marks
+                        </th>
+                        <th>
+                            User Name
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TblStudent.StudentName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TblClass.ClassName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TblExam.ExamTitle)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ExamMarksObtain)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ExamMarksTotal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TblUser.UserName)
+                            </td>
+                            <td class="btn-group">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ExamMarksId })
+                                @Html.ActionLink("Details", "Details", new { id = item.ExamMarksId })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ExamMarksId })
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿@model DatabaseAccess.TblAnnual
+
+@{
+    ViewBag.Title = "Annual Delete";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Title :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnnualTitle)
+        </dd>
+
+        <dt>
+            Description :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnnualDescription)
+        </dd>
+
+        <dt>
+            Fees :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnnualFees)
+        </dd>
+
+        <dt>
+            Status :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnnualStatus)
+        </dd>
+
+        <dt>
+            Programme Name :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblProgramme.ProgrammeName)
+        </dd>
+
+        <dt>
+            User Name :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblUser.UserName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ac71704701fa4431933b24e8c4984973" Name="Diagram1">
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblAnnual" Width="1.5" PointX="7.5" PointY="57.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblClass" Width="1.5" PointX="5.25" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblClassSubject" Width="1.5" PointX="7.5" PointY="84.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblDesignation" Width="1.5" PointX="5.25" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblEmployee" Width="1.5" PointX="7.5" PointY="41.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblEmployeeAttendance" Width="1.5" PointX="9.75" PointY="41.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblEmployeeCertificate" Width="1.5" PointX="5.25" PointY="46.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblEmployeeEducation" Width="1.5" PointX="8.25" PointY="48.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblEmployeeLanguage" Width="1.5" PointX="5.25" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblEmployeeLeaving" Width="1.5" PointX="10.75" PointY="48.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblEmployeeResume" Width="1.5" PointX="3" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblEmployeeSalary" Width="1.5" PointX="12.75" PointY="44.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblEmployeeSkill" Width="1.5" PointX="5.25" PointY="50.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblEmployeeWorkExperience" Width="1.5" PointX="10.25" PointY="44.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblEvent" Width="1.5" PointX="5.25" PointY="57.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblExam" Width="1.5" PointX="5.25" PointY="60.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblExamMark" Width="1.5" PointX="7.5" PointY="53.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblExamSetting" Width="1.5" PointX="7.5" PointY="62.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblExpense" Width="1.5" PointX="10.5" PointY="56.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblExpenseType" Width="1.5" PointX="5.25" PointY="67.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblProgramme" Width="1.5" PointX="5.25" PointY="70.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblProgrammeSession" Width="1.5" PointX="10.5" PointY="65.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblRoom" Width="1.5" PointX="5.25" PointY="74.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblSection" Width="1.5" PointX="5.25" PointY="77.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblSession" Width="1.5" PointX="5.25" PointY="80.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblSessionProgrammeSubjectSetting" Width="1.5" PointX="10.5" PointY="60.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblStudent" Width="1.5" PointX="13.5" PointY="63.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblStudentAttendance" Width="1.5" PointX="18.75" PointY="72.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblStudentLeaving" Width="1.5" PointX="15.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblStudentPromot" Width="1.5" PointX="15.75" PointY="71.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblSubject" Width="1.5" PointX="5.25" PointY="84.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblSubmissionFee" Width="1.5" PointX="15.75" PointY="60.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblTime" Width="1.5" PointX="7.5" PointY="66.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblUser" Width="1.5" PointX="3" PointY="44" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbSchoolManagementSystemModel.TblUserType" Width="1.5" PointX="0.75" PointY="47.125" IsExpanded="true" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblAnnual_TblProgramme" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblAnnual_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblClassSubject_TblClass" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblExamMarks_TblClass" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblPromot_TblClass" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblSessionProgrammeSubjectSetting_TblClass" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblStudent_TblClass" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblStudentAttendance_TblClass" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblStudentLeaving_TblClass" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblSubmissionFee_TblClass" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblClassSubject_TblSubject" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblDesignation_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployee_TblDesignation" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployee_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeAttendance_TblEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeLeaving_TblEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeSalary_TblEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeCertificate_TblEmployeeResume" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeCertificate_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeEducation_TblEmployeeResume" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeEducation_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeLanguage_TblEmployeeResume" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeLanguage_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeLeaving_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeSkill_TblEmployeeResume" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeWorkExperience_TblEmployeeResume" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeSalary_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeSkill_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEmployeeWorkExperience_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblEvent_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblExam_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblExamMarks_TblExam" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblExamSetting_TblExam" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblTime_TblExam" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblExamMarks_TblStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblExamMarks_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblExamSetting_TblProgrammeSession" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblExamSetting_tblSession" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblExamSetting_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblExpense_TblExpenseType" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblExpense_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblExpenseType_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblProgramme_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblProgrammeSession_TblProgramme" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblSessionProgrammeSubjectSetting_TblProgramme" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblStudent_TblProgramme" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblSubmissionFee_TblProgramme" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblProgrammeSession_tblSession" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblProgrammeSession_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblPromot_TblProgrammeSession" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblRoom_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblTime_TblRoom" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblPromot_TblSection" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblSection_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblPromot_TblSession" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_tblSession_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblSessionProgrammeSubjectSetting_TblSession" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblStudent_TblSession" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblStudentAttendance_TblSession" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblSessionProgrammeSubjectSetting_TblSubject" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblSessionProgrammeSubjectSetting_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblPromot_TblStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblStudent_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblStudentAttendance_TblStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblStudentLeaving_TblStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblSubmissionFee_TblStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblStudentLeaving_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblSubject_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblTime_TblSubject" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblSubmissionFee_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblTime_TblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DbSchoolManagementSystemModel.FK_TblUser_TblUserType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

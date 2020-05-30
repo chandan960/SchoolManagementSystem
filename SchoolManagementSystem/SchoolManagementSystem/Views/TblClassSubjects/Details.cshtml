@@ -1,0 +1,48 @@
+﻿@model DatabaseAccess.TblClassSubject
+
+@{
+    ViewBag.Title = "Class Subject Details";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Class :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblClass.ClassName)
+        </dd>
+
+        <dt>
+            Subject :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblSubject.SubjectName)
+        </dd>
+        <dt>
+            Title :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassSubjectTitle)
+        </dd>
+
+        <dt>
+            Status :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassSubjectStatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClassSubjectId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</p>

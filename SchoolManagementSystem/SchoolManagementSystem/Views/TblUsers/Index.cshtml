@@ -1,0 +1,86 @@
+﻿@model IEnumerable<DatabaseAccess.TblUser>
+
+@{
+    ViewBag.Title = "View All Users List";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All User Information</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            Full Name
+                        </th>
+                        <th>
+                            User Name
+                        </th>
+                        <th>
+                            Password
+                        </th>
+                        <th>
+                            Contact No
+                        </th>
+                        <th>
+                            Email Address
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            User Type
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserFullName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserPassword)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserContactNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserEmailAddress)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserAddress)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TblUserType.UserTypeName)
+                            </td>
+                            <td class="btn-group">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.UserId }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Details", "Details", new { id = item.UserId }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.UserId }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

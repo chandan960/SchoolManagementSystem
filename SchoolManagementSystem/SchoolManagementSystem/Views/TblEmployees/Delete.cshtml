@@ -1,0 +1,189 @@
+﻿@model DatabaseAccess.TblEmployee
+
+@{
+    ViewBag.Title = "Employee Delete";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Image :
+        </dt>
+
+        <dd>
+            @{ string imagePath = Model.EmployeePhoto;
+                if (!string.IsNullOrEmpty(imagePath))
+                {
+                <img src="@Url.Content(imagePath)" alt="Image" style="width:100px; height:150px; max-width:100%; height:auto;" />
+                }
+              }
+        </dd>
+
+        <dt>
+            Name :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeName)
+        </dd>
+
+        <dt>
+            Designation :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblDesignation.DesignationTitle)
+        </dd>
+
+        <dt>
+            Contact No :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeContactNo)
+        </dd>
+
+        <dt>
+            Email Address :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeEmailAddress)
+        </dd>
+
+        <dt>
+            Address :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeAddress)
+        </dd>
+
+        <dt>
+            Qualification :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeQualification)
+        </dd>
+
+        <dt>
+            Description :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeDescription)
+        </dd>
+
+        <dt>
+            Basic Salary :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeBasicSalary)
+        </dd>
+
+        <dt>
+            Gender :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeGender)
+        </dd>
+
+        <dt>
+            Home Contaact No :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeHomeContactNo)
+        </dd>
+
+        <dt>
+            Status :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeStatus)
+        </dd>
+
+        <dt>
+            Do You Have Any Disability :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeDoYouHaveAnyDisability)
+        </dd>
+
+        <dt>
+            If Disability Yes Give Issue :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeIfDisabilityYesGiveIssue)
+        </dd>
+
+        <dt>
+            Employee Do You Taking Any Medication :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeDoYouTakingAnyMedication)
+        </dd>
+
+        <dt>
+            If Medication Yes Give Issue :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeIfMedicationYesGiveIssue)
+        </dd>
+
+        <dt>
+            Employee Any Creminal Off Cence Again :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeAnyCreminalOffCenceAgain)
+        </dd>
+
+        <dt>
+            If Creminal Off Cence Again Yes Give Issue :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeIfCreminalOffCenceAgainYesGiveIssue)
+        </dd>
+
+        <dt>
+            Registration Date :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeRegistrationDate)
+        </dd>
+
+        <dt>
+            User Name :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblUser.UserFullName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

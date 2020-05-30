@@ -1,0 +1,65 @@
+﻿@model DatabaseAccess.TblProgrammeSession
+
+@{
+    ViewBag.Title = "Programme Session Details";
+}
+
+<h4>@ViewBag.Title</h4>
+<hr />
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Session :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblSession.SessionName)
+        </dd>
+
+        <dt>
+            Programme :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblProgramme.ProgrammeName)
+        </dd>
+
+        <dt>
+            Details :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProgrammeSessionDetails)
+        </dd>
+
+        <dt>
+            Registration Date :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProgrammeSessionRegistrationDate)
+        </dd>
+
+        <dt>
+            Description :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProgrammeSessionDescription)
+        </dd>
+
+        <dt>
+            User Name :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblUser.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProgrammeSessionId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</p>
